@@ -155,4 +155,4 @@ Esse arquivo guarda o ID do projeto. Se ele não existe (ou você não está na 
 
 ## Referências
 
-eddit: https://www.reddit.com/r/LaTeX/comments/1rgsp0t/i_built_an_opensource_cli_for_overleaf_sync/
+Reddit: https://www.reddit.com/r/LaTeX/comments/1rgsp0t/i_built_an_opensource_cli_for_overleaf_sync/
