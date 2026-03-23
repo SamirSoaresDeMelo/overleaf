@@ -1,0 +1,44 @@
+# Python virtual environment
+venv/
+.env/
+.venv/
+
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fls
+*.fdb_latexmk
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.lof
+*.lot
+*.lol
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.xdy
+
+# Output PDFs and other generated files
+*.pdf
+*.dvi
+*.ps
+
+# Overleaf CLI output (customize if needed)
+olcli.log
+olcli-cache/
+olcli-output/
+
+# OS files
+.DS_Store
+Thumbs.db

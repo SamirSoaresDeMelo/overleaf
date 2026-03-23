@@ -1,0 +1,235 @@
+\documentclass[
+    12pt,
+    openright,
+    oneside,
+    a4paper,
+    english,
+    french,
+    spanish,
+    brazil
+]{abntex2}
+
+% ---
+% Pacotes básicos
+% ---
+\renewcommand{\ABNTEXchapterfont}{\bfseries\rmfamily}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lastpage}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{caption}
+\usepackage{subcaption} 
+
+% ---
+% Pacotes para Listagens de Código
+% ---
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Listagem}
+\renewcommand{\lstlistlistingname}{Lista de listagens}
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    showstringspaces=false
+}
+
+% ---
+% Pacote de citações (Citações nominais padrão ABNT)
+% ---
+\usepackage[alf]{abntex2cite}
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Relatório Técnico: [Insira o Título do Trabalho Aqui]}
+\autor{Samir Soares de Melo}
+\local{Montes Claros - MG}
+\data{[Ano]}
+\instituicao{
+    Universidade Estadual de Montes Claros -- Unimontes
+    \par
+    Centro de Ciências Exatas e Tecnológicas -- CCET
+    \par
+    Curso de Bacharelado em Sistemas de Informação
+}
+\tipotrabalho{Relatório Técnico}
+\preambulo{Relatório técnico apresentado à disciplina de [Nome da Disciplina], ministrada pelo Prof. [Nome do Professor], referente à atividade [Nome da Atividade].}
+
+% ---
+% Configurações de aparência do PDF final
+% ---
+\definecolor{blue}{RGB}{41,5,195}
+\makeatletter
+\hypersetup{
+    pdftitle={\@title},
+    pdfauthor={\@author},
+    pdfsubject={\imprimirpreambulo},
+    pdfcreator={LaTeX with abnTeX2},
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue,
+    bookmarksdepth=4
+}
+\makeatother
+
+\setlength{\parindent}{1.3cm}
+\setlength{\parskip}{0.2cm}
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+\selectlanguage{brazil}
+\frenchspacing
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+\imprimircapa
+\imprimirfolhaderosto
+
+% --- Listas e Sumário ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+\pdfbookmark[0]{\lstlistlistingname}{lol}
+\lstlistoflistings*
+\cleardoublepage
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ---
+\chapter{Introdução}
+% ---
+\section{Problema Tratado}
+[Descreva aqui o contexto e o problema que o seu relatório ou sistema visa resolver. Lembre-se de escrever sempre na terceira pessoa impessoal, ex: "Observou-se que...", "Nota-se a necessidade de..."]. 
+
+\section{Justificativa}
+A elaboração deste trabalho justifica-se pela importância de aplicar os conceitos teóricos na prática. Para o desenvolvimento, utilizou-se o software Exemplo\footnote{Exemplo: Descrição oficial da ferramenta ou linguagem. Disponível em: https://www.link-oficial.com/. Acesso em: [Data].}, o que permitiu consolidar o aprendizado estrutural da disciplina.
+
+\section{Objetivo}
+O presente trabalho tem como objetivo [inserir verbo no infinitivo: desenvolver, analisar, documentar] um [inserir o que foi feito], visando [inserir o propósito final].
+
+% ---
+\chapter{Fundamentação Teórica}
+% ---
+Neste capítulo, apresentam-se os conceitos teóricos que embasam a prática. Segundo \citeonline{[chave_da_referencia]}, a teoria é fundamental para a construção de soluções sólidas. 
+
+Além dos artigos científicos, protocolos e padrões também determinam as diretrizes de desenvolvimento. Um exemplo clássico é o protocolo XPTO\footnote{XPTO: Protocolo de exemplo. Disponível em: https://... Acesso em: [Data].}, que define as regras de comunicação do sistema avaliado \cite{[chave_da_referencia2]}.
+
+% ---
+\chapter{Desenvolvimento}
+% ---
+Para garantir a organização e modularidade do trabalho, o projeto foi dividido em etapas lógicas, detalhadas nas subseções a seguir.
+
+\section{[Nome da Primeira Etapa]}
+Iniciou-se a implementação configurando a base do projeto. Conforme ilustrado na Listagem \ref{lst:codigo_exemplo}, o algoritmo foi estruturado para receber os dados iniciais.
+
+\begin{lstlisting}[caption={Exemplo de código fonte inicial}, label={lst:codigo_exemplo}, language=PHP]
+// Insira seu codigo aqui
+$variavel = "Exemplo";
+\end{lstlisting}
+
+Dessa forma, a rotina apresentada na listagem garante que os dados sejam processados corretamente antes de avançar para a próxima fase.
+
+\section{[Nome da Segunda Etapa]}
+A interface e a organização visual dos elementos foram estruturadas de forma responsiva. Na Figura \ref{fig:exemplo_interface}, observa-se a tela inicial desenvolvida.
+
+\begin{figure}[htb]
+    \centering
+    \caption{Tela representativa do sistema}
+    \label{fig:exemplo_interface}
+    % \includegraphics[width=0.8\textwidth]{nome_da_imagem.png}
+    \fbox{\rule{0pt}{2in} \rule{0.8\textwidth}{0pt}} % Placeholder (apague e descomente a linha de cima)
+    \legend{Fonte: Elaborado pelo autor ([Ano]).}
+\end{figure}
+
+A partir da Figura \ref{fig:exemplo_interface}, constata-se que a disposição dos botões facilita a usabilidade do operador. 
+
+Caso o sistema necessite de comparações visuais, podem ser utilizadas figuras compostas. A Figura \ref{fig:exemplo_composto} mostra o estado inicial, enquanto a segunda parte exibe o resultado final.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \fbox{\rule{0pt}{1.5in} \rule{1in}{0pt}} % Placeholder
+        \caption{Estado Inicial}
+        \label{fig:composta_a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \fbox{\rule{0pt}{1.5in} \rule{1in}{0pt}} % Placeholder
+        \caption{Estado Final}
+        \label{fig:composta_b}
+    \end{subfigure}
+    \caption{Comparação entre diferentes estados do sistema}
+    \label{fig:exemplo_composto}
+    \legend{Fonte: Elaborado pelo autor ([Ano]).}
+\end{figure}
+
+Para não sobrecarregar o texto principal do relatório técnico, as capturas adicionais de tela foram alocadas no Apêndice A.
+
+% ---
+\chapter{Trabalhos Correlatos}
+% ---
+Ao analisar o estado da arte referente ao tema abordado, constata-se que soluções modernas seguem padrões arquiteturais específicos. \citeonline{[chave_estado_da_arte]} elaboraram um estudo onde demonstram que as abordagens atuais reduzem o tempo de processamento em X\%.
+
+Nesse sentido, debates em fóruns especializados complementam a literatura acadêmica. Ao avaliar discussões recentes de desenvolvedores no \textit{Stack Overflow} e em repositórios do \textit{GitHub}, observam-se as seguintes opiniões recorrentes:
+\begin{itemize}
+    \item A comunidade recomenda a utilização da abordagem Y por facilitar a manutenção a longo prazo.
+    \item Profissionais da área apontam que a biblioteca Z pode apresentar vulnerabilidades se não configurada corretamente.
+\end{itemize}
+
+Com base nesses apontamentos práticos e acadêmicos, a escolha técnica do presente trabalho procurou alinhar-se com as melhores práticas documentadas.
+
+% ---
+\chapter{Conclusão}
+% ---
+O desenvolvimento deste projeto permitiu a aplicação prática dos conceitos abordados na disciplina. Conclui-se que a elaboração da solução exigiu um certo nível intermediário de planejamento e a adoção de boas práticas de estruturação de código. O sistema atendeu a todos os requisitos propostos, consolidando a proficiência nas ferramentas e tecnologias estudadas.
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% Certifique-se de ter o arquivo "referencias.bib" criado no Overleaf
+\bibliography{referencias} 
+
+% ---
+% Apêndices
+% ---
+\begin{apendicesenv}
+\partapendices
+
+\chapter{[Título do Apêndice: Ex: Telas Adicionais ou Diagramas]}
+\label{apendice:telas}
+
+Este apêndice documenta artefatos complementares gerados ao longo do desenvolvimento, evitando a poluição visual do documento principal. A Figura \ref{fig:apendice_extra} demonstra um fluxo de exceção do sistema.
+
+\begin{figure}[htb]
+    \centering
+    \caption{Fluxo de exceção ou tela adicional}
+    \label{fig:apendice_extra}
+    % \includegraphics[width=0.9\textwidth]{imagem_extra.png}
+    \fbox{\rule{0pt}{2in} \rule{0.9\textwidth}{0pt}} % Placeholder
+    \legend{Fonte: Elaborado pelo autor ([Ano]).}
+\end{figure}
+
+Dessa forma, conclui-se a documentação visual complementar, atestando o funcionamento do escopo proposto.
+
+\end{apendicesenv}
+
+\end{document}
