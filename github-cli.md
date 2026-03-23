@@ -3,7 +3,7 @@
 Este guia ensina a publicar seu projeto local no GitHub usando a ferramenta oficial GitHub CLI (`gh`).
 
 ## Pré-requisitos
-- Projeto já inicializado com `git init`
+- Projeto já inicializado com `git init` e com commit local inicial 
 
 ## Passos
 
@@ -13,7 +13,7 @@ Baixe e instale a GitHub CLI seguindo as instruções para seu sistema operacion
 ```sh
 sudo apt update
 ```
-
+ 
 ```sh
 sudo apt install gh
 ```

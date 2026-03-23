@@ -1,6 +1,6 @@
 # 📄 Overleaf CLI Workflow (olcli)
 
-Este projeto utiliza o olcli para sincronização entre projetos do Overleaf e ambiente local, permitindo edição com ferramentas como VS Code e versionamento com Git/GitHub.
+Este projeto utiliza o olcli para sincronização entre projetos do Overleaf e ambiente local, permitindo edição com ferramentas como VS Code e versionamento com Git/GitHub sem precisar usar a versão paga do overleaf.
 
 ## 📦 Pré-requisitos
 - Node.js instalado
@@ -68,12 +68,12 @@ olcli output ID_DO_PROJETO
 ## Fluxo de trabalho recomendado
 1. Sempre sincronizar antes de editar:
    ```sh
-   olcli sync ./meu-projeto
+   olcli sync ./meu-projeto --project ID_DO_PROJETO
    ```
 2. Editar localmente
 3. Enviar alterações:
    ```sh
-   olcli push ./meu-projeto
+   olcli push ./meu-projeto --project ID_DO_PROJETO
    ```
 
 ## 🧾 Integração com Git
@@ -139,7 +139,7 @@ Sem necessidade de plano pago.
 Se você fizer alterações diretamente no Overleaf, elas não aparecem automaticamente no seu repositório local ou no GitHub. Para trazer essas mudanças, você precisa executar no diretório do projeto:
 
 ```
-olcli sync ./meu-projeto
+olcli sync ./meu-projeto --project ID_DO_PROJETO
 ```
 
 Quando você faz pull, o olcli cria um arquivo oculto:
