@@ -35,7 +35,7 @@ Isso faz:
 
 OBS: Se quiser realizar pull ou push, basta seguir esas etapas separadamente:
 
-## ⬇️ Baixar (pull) um projeto
+### ⬇️ Baixar (pull) um projeto
 ```sh
 olcli pull ID_DO_PROJETO ./nome-da-pasta --project ID_DO_PROJETO
 ```
@@ -44,11 +44,12 @@ Exemplo:
 olcli pull 73e15212g73180rgf253ghs ./meu-projeto --project ID_DO_PROJETO
 ```
 
-## ⬆️ Enviar alterações (push)
+### ⬆️ Enviar alterações (push)
 ```sh
 olcli push ./meu-projeto
 ```
 
+Depois disso, as alterações feitas localmente serão refletidas no projeto do Overleaf.
 
 ## 🛠️ Compilar projeto
 ```sh
@@ -152,6 +153,10 @@ Esse arquivo guarda o ID do projeto. Se ele não existe (ou você não está na 
 
 
 - Não tem problema puxar um projeto com nomes sem underlines, mas o arquivo vai vir apenas com o primeiro nome antes do espaço e também é recomendado evitar espaços e caracteres especiais para evitar problemas de compatibilidade entre sistemas operacionais.
+
+- Expor o ID de um projeto do Overleaf em um repositório público não representa risco, pois ele é apenas um identificador e não permite acesso ao conteúdo ou à sua conta; o verdadeiro perigo está em compartilhar credenciais como cookies de sessão (overleaf_session2), tokens ou senhas, já que esses dados possibilitam acesso completo aos seus projetos, portanto, desde que você não inclua arquivos sensíveis como .olcli.json ou qualquer informação de autenticação, é seguro manter o repositório público.
+
+- No su ambinete local no VS Code conectado com o overleaf é possível compilar, e baixar o pdf do seu projeto... Mas isso pode ser feito pela própria plataforma do OverLeaf, então não é necessário usar o olcli para isso, a vantagem do olcli é a sincronização e edição local e replicabilidade do projeto, mas a compilação e download de arquivos de saída podem ser feitos diretamente no site do Overleaf.
 
 ## Referências
 
