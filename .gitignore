@@ -39,6 +39,8 @@ olcli.log
 olcli-cache/
 olcli-output/
 
+.olcli.json
+
 # OS files
 .DS_Store
 Thumbs.db
