@@ -1,0 +1,53 @@
+% Exemplo de documento de padrão/protocolo (Fundamentação Teórica deve citar
+% ao menos um documento desse tipo -- RFC, ISO, W3C etc.). Esta entrada é real
+% e verificável; substitua pelo padrão/protocolo realmente utilizado no seu trabalho.
+@misc{rfc9110http,
+  author       = {{Internet Engineering Task Force}},
+  title        = {{RFC 9110: HTTP Semantics}},
+  year         = {2022},
+  howpublished = {\url{https://www.rfc-editor.org/rfc/rfc9110}},
+  note         = {Acesso em: DD mês. AAAA}
+}
+
+% Exemplo de referência acadêmica (livro ou artigo). Substitua pelos dados
+% reais da sua referência -- procure priorizar publicações dos últimos 5 anos.
+@book{exemplolivro2024,
+  author    = {Sobrenome, Nome do Autor},
+  title     = {Título do livro},
+  edition   = {1},
+  year      = {2024},
+  publisher = {Editora},
+  address   = {Cidade}
+}
+
+@article{exemploartigo2023,
+  author  = {Sobrenome, Nome do Autor},
+  title   = {Título do artigo científico},
+  journal = {Nome do Periódico},
+  volume  = {1},
+  number  = {1},
+  pages   = {1--10},
+  year    = {2023},
+  doi     = {10.0000/exemplo}
+}
+
+% Exemplo de citação de opinião de programador/estudioso em fórum especializado
+% (ex.: Stack Overflow, listas de discussão, blogs técnicos). Substitua pelo
+% autor, título e URL reais da discussão consultada.
+@misc{exemploforum2024,
+  author       = {Nome do Usuário (pseudônimo do fórum)},
+  title        = {Título da pergunta ou resposta consultada},
+  year         = {2024},
+  howpublished = {\url{https://stackoverflow.com/questions/000000}},
+  note         = {Fórum: Stack Overflow. Acesso em: DD mês. AAAA}
+}
+
+% Entrada de controle do abntex2cite para adequação à NBR 10520:2023:
+% autor em caixa normal nas citações parentéticas (Autor, ano) em vez de (AUTOR, ano),
+% e "et al." em itálico. Deve ser ativada com \citeoption{abnt-opcoes-nbr2023}
+% como a primeira citação do documento (logo após \begin{document}).
+@ABNT-options{abnt-opcoes-nbr2023,
+  key             = {x},
+  abnt-cite-style = {(Author, YEAR)},
+  abnt-etal-text  = {\textit{et al.}}
+}

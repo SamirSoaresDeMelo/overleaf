@@ -19,7 +19,7 @@
   \begin{capa}%
     \vspace*{-1cm}\hspace*{-1.5cm} 
     {\mbox{\begin{minipage}{2cm}
-        \centerline{\includegraphics[scale=0.22]{estadominas.jpeg}}
+        \centerline{\includegraphics[scale=0.22]{Images/estadominas.jpeg}}
     \end{minipage}}} \hspace{-.6cm} 
     \begin{minipage}{11.5cm}
         \begin{center}
@@ -29,7 +29,7 @@
         \end{center}
     \end{minipage}
     {\mbox{\begin{minipage}{2cm}
-        \centerline{\includegraphics[scale=0.065]{unimontes.png}}
+        \centerline{\includegraphics[scale=0.065]{Images/unimontes.png}}
     \end{minipage}}} 
 
     \vspace{2cm}
@@ -60,20 +60,6 @@
 \renewcommand{\cftquadroname}{\quadroname\space} 
 \renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
 \setfloatlocations{quadro}{hbtp}
-
-% ---
-% Novo list of para LISTAGENS (Código Fonte)
-% ---
-\newcommand{\listagemname}{Listagem}
-\newcommand{\listoflistagensname}{Lista de listagens}
-\newfloat[chapter]{listagem}{lol}{\listagemname}
-\newlistof{listoflistagens}{lol}{\listoflistagensname}
-\newlistentry{listagem}{lol}{0}
-\setfloatadjustment{listagem}{\centering}
-\counterwithout{listagem}{chapter}
-\renewcommand{\cftlistagemname}{\listagemname\space} 
-\renewcommand*{\cftlistagemaftersnum}{\hfill--\hfill}
-\setfloatlocations{listagem}{hbtp}
 
 % ---
 % FOLHA DE ROSTO (Adequada à CEPEX 182)

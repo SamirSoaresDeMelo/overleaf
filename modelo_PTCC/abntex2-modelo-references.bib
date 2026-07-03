@@ -1,0 +1,49 @@
+% Exemplos de tipos de entrada mais comuns em um TCC.
+% Substitua pelos dados reais das suas próprias referências.
+
+@book{marconi2017metodologia,
+  author    = {Marina de Andrade Marconi and Eva Maria Lakatos},
+  title     = {Fundamentos de Metodologia Científica},
+  edition   = {8},
+  year      = {2017},
+  publisher = {Atlas},
+  address   = {São Paulo}
+}
+
+@book{silberschatz2020database,
+  title     = {Database System Concepts},
+  author    = {Silberschatz, Abraham and Korth, Henry F. and Sudarshan, S.},
+  year      = {2020},
+  edition   = {7},
+  publisher = {McGraw-Hill Education},
+  address   = {New York}
+}
+
+@article{exemploartigo2024,
+  author  = {Sobrenome, Nome do Autor},
+  title   = {Título do artigo científico},
+  journal = {Nome do Periódico},
+  volume  = {1},
+  number  = {1},
+  pages   = {1--10},
+  year    = {2024},
+  doi     = {10.0000/exemplo}
+}
+
+@misc{exemplosite2024,
+  author       = {{Nome da Organização}},
+  title        = {Título da página ou documento},
+  year         = {2024},
+  howpublished = {\url{https://www.exemplo.com/}},
+  note         = {Acesso em: DD mês. AAAA}
+}
+
+% Entrada de controle do abntex2cite para adequação à NBR 10520:2023:
+% autor em caixa normal nas citações parentéticas (Autor, ano) em vez de (AUTOR, ano),
+% e "et al." em itálico. Deve ser ativada com \citeoption{abnt-opcoes-nbr2023}
+% como a primeira citação do documento (logo após \begin{document}).
+@ABNT-options{abnt-opcoes-nbr2023,
+  key             = {x},
+  abnt-cite-style = {(Author, YEAR)},
+  abnt-etal-text  = {\textit{et al.}}
+}

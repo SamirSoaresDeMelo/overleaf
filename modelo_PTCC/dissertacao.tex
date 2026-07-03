@@ -1,0 +1,318 @@
+% ------------------------------------------------------------------------
+% MODELO ADAPTADO PARA GRADUAÇÃO EM SISTEMAS DE INFORMAÇÃO - UNIMONTES
+% ESTRUTURA MODULAR
+% ------------------------------------------------------------------------
+
+\documentclass[
+    12pt,               
+    openright,          
+    oneside,            
+    a4paper,            
+    english,            
+    french,             
+    spanish,            
+    brazil              
+    ]{unimontes-si-abntex2}
+    
+% ---
+% Pacotes para Desenhos e Autômatos
+% ---
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows.meta}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{subcaption}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathptmx} % Fonte Times New Roman exigida pela Unimontes    
+\usepackage[T1]{fontenc}        
+\usepackage[utf8]{inputenc}     
+\usepackage{lastpage}           
+\usepackage{indentfirst}        
+\usepackage{color}              
+\usepackage{graphicx}           
+\usepackage{microtype}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{caption}
+\captionsetup{justification=raggedright, singlelinecheck=false} % legendas e fontes alinhadas à esquerda (ABNT)
+\AtBeginDocument{\renewcommand{\configurecaptions}{\captionsetup{justification=raggedright, singlelinecheck=false}}} % idem para tabelas em \IBGEtab
+\usepackage{chngcntr}
+\usepackage{float}
+
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Definição de cores
+\definecolor{codegreen}{rgb}{0.2,0.8,0.2}
+\definecolor{codegray}{rgb}{0.7,0.7,0.7}
+\definecolor{codepurple}{rgb}{0.7,0.3,0.9}
+\definecolor{codeviolet}{rgb}{0.6,0.2,0.9}
+
+% Configuração global do lstlisting (padrão ABNT)
+\lstset{
+    language=SQL,
+    backgroundcolor=\color{white},
+    basicstyle=\ttfamily\small\color{black},
+    keywordstyle=\color{codeviolet},
+    commentstyle=\color{codegreen},
+    stringstyle=\color{codepurple},
+    numbers=left,
+    numberstyle=\tiny\color{black},
+    breaklines=true,
+    showstringspaces=false,
+    tabsize=2,
+    frame=single,
+    rulecolor=\color{black},
+    captionpos=t,
+    abovecaptionskip=3mm,      % Espaço acima do título (ABNT)
+    belowcaptionskip=3mm,      % Espaço abaixo do título
+    belowskip=4mm,             % Espaço após o código
+    aboveskip=4mm              % Espaço antes do código
+}
+
+% ---
+% Pacotes de Algoritmos (CONFIGURADOS PARA PORTUGUÊS)
+% ---
+\usepackage[ruled,linesnumbered,portuguese,onelanguage]{algorithm2e}
+
+% Tradução manual dos títulos e legendas
+\renewcommand{\listalgorithmcfname}{Lista de Algoritmos}
+\renewcommand{\algorithmcfname}{Algoritmo}
+\SetKwInput{KwIn}{Entrada}
+\SetKwInput{KwOut}{Saída}
+
+% Forçando as palavras-chave para Português (Padrão Teórico)
+\SetKwFor{While}{enquanto}{faça}{fim}
+\SetKwFor{For}{para}{faça}{fim}
+\SetKwFor{ForEach}{para cada}{faça}{fim}
+\SetKwIF{If}{ElseIf}{Else}{se}{então}{senão se}{senão}{fim}
+\SetKw{Return}{retorne}
+
+% Ajusta o contador para não zerar por capítulo
+\AtBeginDocument{
+    \counterwithout{algocf}{chapter}
+    \counterwithout{lstlisting}{chapter}
+}
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[alf]{abntex2cite}   % Citações padrão ABNT (Nominais)
+\renewcommand{\ABNTEXchapterfont}{\rmfamily\bfseries}
+\renewcommand{\ABNTEXsectionfont}{\rmfamily\bfseries}
+\renewcommand{\ABNTEXsubsectionfont}{\rmfamily\bfseries}
+\renewcommand{\ABNTEXsubsubsectionfont}{\rmfamily\bfseries}
+
+% Importa o arquivo de configurações e comandos auxiliares (se houver)
+% \input{configuracoes.tex} 
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Título do Trabalho de Conclusão de Curso}
+\autor{Nome do(a) Autor(a)}
+\local{Montes Claros - MG}
+\data{Mês/Ano}
+\orientador{Prof(a). Dr(a). Nome do(a) Orientador(a)}
+
+\instituicao{
+  Universidade Estadual de Montes Claros -- Unimontes
+  \par
+  Centro de Ciências Exatas e Tecnológicas -- CCET
+  \par
+  Curso de Bacharelado em Sistemas de Informação
+}
+
+\tipotrabalho{Projeto de Trabalho de Conclusão de Curso (Graduação)}
+
+\preambulo{Projeto de Trabalho de Conclusão de Curso apresentado ao Curso de Sistemas de Informação da Universidade Estadual de Montes Claros, como requisito parcial para a obtenção do título de Bacharel em Sistemas de Informação.}
+
+% ---
+% Configurações de aparência do PDF final
+\definecolor{blue}{RGB}{41,5,195}
+
+\makeatletter
+\hypersetup{
+        pdftitle={\@title}, 
+        pdfauthor={\@author},
+        pdfsubject={\imprimirpreambulo},
+        pdfcreator={LaTeX with abnTeX2},
+        pdfkeywords={unimontes}{sistemas de informação}{tcc},
+        colorlinks=true,               
+        linkcolor=black, % Recomenda-se preto para impressão final             
+        citecolor=black,                
+        filecolor=black,              
+        urlcolor=black,
+        bookmarksdepth=4
+}
+\makeatother
+
+% --- 
+% Espaçamentos entre linhas e parágrafos exigidos pela Unimontes
+% --- 
+\setlength{\parindent}{2.0cm} % Recuo obrigatório de 2.0cm
+\setlength{\parskip}{0.0cm}   % Sem espaçamento extra entre parágrafos
+
+\makeindex
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\selectlanguage{brazil}
+\frenchspacing
+
+% Ativa a adequação à NBR 10520:2023 (autor em caixa normal nas citações
+% parentéticas e "et al." em itálico). Precisa ser a primeira citação processada.
+\citeoption{abnt-opcoes-nbr2023}
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+\imprimircapa
+\imprimirfolhaderosto*
+
+% --- Ficha Catalográfica APENAS EM TCC
+% \begin{fichacatalografica}
+%     \sffamily
+%     \vspace*{\fill}
+%     \begin{center}
+%     \fbox{\begin{minipage}[c][8cm]{13.5cm}
+%     \small
+%     \imprimirautor
+%
+%     \hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+%     \imprimirlocal, \imprimirdata.
+%
+%     \hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+%
+%     \hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+%
+%     \hspace{0.5cm}
+%     \begin{minipage}{12cm}
+%         \setlength{\parindent}{0pt}
+%         \imprimirtipotrabalho~--~\imprimirinstituicao, \imprimirdata.
+%     \end{minipage}\\
+%
+%     \hspace{0.5cm}
+%         1. Palavra-chave 1.
+%         2. Palavra-chave 2.
+%         3. Palavra-chave 3.
+%         I. \imprimirorientador.
+%         II. Universidade Estadual de Montes Claros.
+%     \end{minipage}}
+%     \end{center}
+% \end{fichacatalografica}
+
+
+% --- Folha de aprovação APENAS EM TCC
+%
+%\begin{folhadeaprovacao}
+%\begin{center}
+%    {\ABNTEXchapterfont\large\textbf{{\imprimirautor}}}
+%    \vspace*{\fill}\vspace*{\fill}
+%    \begin{center}
+%      \ABNTEXchapterfont\bfseries\Large{\imprimirtitulo}
+%    \end{center}
+%    \vspace*{\fill}
+%    \hspace{.45\textwidth}
+%    \begin{minipage}{.5\textwidth}
+%        \imprimirpreambulo
+%    \end{minipage}%
+%    \vspace*{\fill}
+%   \end{center}
+%
+%   Trabalho aprovado em: \_\_ de \_\_\_\_\_\_\_\_\_\_ de \_\_\_\_\_
+%
+%   \begin{center}
+%     \vspace*{0.5cm}
+%     \rule{10cm}{1pt} \\
+%     \imprimirorientador \ (Orientador) -- Unimontes
+%     \vspace*{0.5cm}
+%     
+%     \rule{10cm}{1pt} \\
+%     Examinador 1 -- Unimontes
+%     \vspace*{0.5cm}
+%     
+%     \rule{10cm}{1pt} \\
+%     Examinador 2 -- Unimontes
+%   \end{center}
+%\end{folhadeaprovacao}
+
+% --- Resumo na língua vernácula
+% \setlength{\absparsep}{18pt}
+% \input{resumo.tex}
+
+% --- Abstract
+% \input{abstract.tex}
+
+% --- Listas
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+% Lista de Algoritmos
+% \pdfbookmark[0]{\listalgorithmcfname}{loa}
+% \listofalgorithms
+% \cleardoublepage
+
+% Lista de Tabelas
+% \pdfbookmark[0]{\listtablename}{lot}
+% \listoftables*
+% \cleardoublepage
+
+% Lista de Listagens
+% \pdfbookmark[0]{\lstlistlistingname}{lol}
+% \lstlistoflistings
+% \cleardoublepage
+
+% --- Lista de Listagens alterando o nome do inglês para português
+\renewcommand{\lstlistlistingname}{Lista de Listagens}
+\renewcommand{\lstlistingname}{Listagem}
+
+% --- SUMÁRIO ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% -------------------------------------
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% --- Chamando os capítulos modularizados ---
+\input{introducao.tex}
+\input{tema-problema.tex}
+\input{objetivos.tex}
+\input{justificativa.tex}
+\input{FundamentacaoTeorica.tex}
+\input{metodologia2x.tex}
+\input{cronograma.tex}
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+\bibliography{abntex2-modelo-references} 
+
+% --- Apêndices
+
+% \begin{apendicesenv}
+% \partapendices
+% \end{apendicesenv}
+% \begin{anexosenv}
+% \partanexos
+% \end{anexosenv}
+
+\end{document}

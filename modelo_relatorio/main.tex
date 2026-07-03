@@ -1,0 +1,436 @@
+% ------------------------------------------------------------------------
+% RELATÓRIO TÉCNICO - MODELO PADRÃO ABNT
+% ------------------------------------------------------------------------
+
+\documentclass[
+    12pt,
+    openright,
+    oneside,
+    a4paper,
+    brazil
+]{abntex2}
+
+% ================== PACOTES BÁSICOS ==================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{microtype}
+\usepackage{chngcntr}
+\usepackage[left=3cm, top=3cm, right=2cm, bottom=2cm]{geometry}
+
+% Pacote para Listagens de Código
+\usepackage{listings}
+
+% Pacote para citações no padrão ABNT
+\usepackage[alf]{abntex2cite}
+
+% ================== ADEQUAÇÃO À NBR 10520:2023 ==================
+% Autor em caixa normal nas citações parentéticas -- (Autor, ano) em vez de
+% (AUTOR, ano) -- e "et al." em itálico. Ativado logo após \begin{document}.
+% Mecanismo definido em references.bib (entrada abnt-opcoes-nbr2023).
+
+% ================== ALINHAMENTO DE LEGENDAS E FONTES (ABNT) ==================
+% A norma pede legendas e fontes de figuras/tabelas/quadros alinhadas à
+% esquerda (não centralizadas).
+\captionsetup{justification=raggedright, singlelinecheck=false}
+\AtBeginDocument{\renewcommand{\configurecaptions}{\captionsetup{justification=raggedright, singlelinecheck=false}}}
+
+% ================== NUMERAÇÃO SEQUENCIAL (NÃO POR CAPÍTULO) ==================
+% OBS: a ABNT não define um padrão único, mas o mais comum e recomendado é
+% numerar Figuras, Quadros e Tabelas sequencialmente ao longo de todo o
+% trabalho (Figura 1, Figura 2, Figura 3...), e NÃO por capítulo
+% (Figura 1.1, Figura 1.2...). Quando duas ou mais figuras estiverem
+% agrupadas por serem parte do mesmo elemento, utilize Figura 1(a), Figura
+% 1(b) (ver exemplo na Seção de Desenvolvimento), em vez de Figura 1.1/1.2.
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+% ================== NOVO TIPO DE FLUTUANTE: QUADRO ==================
+% A ABNT distingue Quadro (conteúdo textual/descritivo, sem tratamento
+% estatístico) de Tabela (dados numéricos). O abntex2 não traz Quadro
+% pronto, então ele é criado aqui com o pacote float.
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de quadros}
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+\setfloatadjustment{quadro}{\centering}
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space}
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+\setfloatlocations{quadro}{htbp}
+
+% ================== CONFIGURAÇÕES DE LISTAGENS ==================
+% Definição de cores para os códigos
+\definecolor{codegreen}{rgb}{0.2,0.8,0.2}
+\definecolor{codegray}{rgb}{0.7,0.7,0.7}
+\definecolor{codepurple}{rgb}{0.7,0.3,0.9}
+\definecolor{codeviolet}{rgb}{0.6,0.2,0.9}
+
+% Configuração global do lstlisting (ajuste "language" para a linguagem do seu projeto)
+\lstset{
+    language=Java,
+    backgroundcolor=\color{white},
+    basicstyle=\ttfamily\small\color{black},
+    keywordstyle=\color{codeviolet},
+    commentstyle=\color{codegreen},
+    stringstyle=\color{codepurple},
+    numbers=left,
+    numberstyle=\tiny\color{black},
+    breaklines=true,
+    showstringspaces=false,
+    tabsize=2,
+    frame=single,
+    rulecolor=\color{black},
+    captionpos=t,
+    abovecaptionskip=3mm,
+    belowcaptionskip=3mm,
+    belowskip=4mm,
+    aboveskip=4mm
+}
+
+% OBS: por padrão, trechos de código são numerados e legendados como
+% "Listagem" (é o termo tecnicamente correto). Alguns professores, porém,
+% pedem que o código seja tratado como "Figura" -- se for o seu caso, troque
+% a linha abaixo por \renewcommand{\lstlistingname}{Figura} e mova
+% \lstlistoflistings para dentro da Lista de Figuras.
+\renewcommand{\lstlistingname}{Listagem}
+\renewcommand{\lstlistlistingname}{Lista de Listagens}
+
+% Ajusta os contadores de código para não resetarem por capítulo
+\AtBeginDocument{
+    \counterwithout{lstlisting}{chapter}
+}
+
+% ================== AJUSTE DOS TÍTULOS ==================
+\renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXchapterfontsize}{\huge}
+\renewcommand{\ABNTEXsectionfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXsectionfontsize}{\Large}
+\renewcommand{\ABNTEXsubsectionfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXsubsectionfontsize}{\large}
+
+% ================== ESPAÇAMENTOS E LINKS ==================
+\setlength{\parindent}{2cm}
+\setlength{\parskip}{0cm}
+\definecolor{blue}{RGB}{41,5,195}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue,
+    bookmarksdepth=4
+}
+
+% ================== DADOS ==================
+\titulo{Relatório Técnico: [Nome do Relatório]}
+\autor{[Nome Completo do Autor]}
+\local{Montes Claros -- MG}
+\data{[Mês/Ano]}
+\instituicao{
+    Universidade Estadual de Montes Claros -- Unimontes \\
+    Centro de Ciências Exatas e Tecnológicas -- CCET \\
+    Curso de Bacharelado em Sistemas de Informação
+}
+\tipotrabalho{Relatório Técnico}
+\preambulo{Relatório técnico apresentado à disciplina de [Nome da Disciplina], ministrada pelo(a) Prof(a). [Nome do(a) Professor(a)], referente à atividade [Nome da Atividade].}
+
+% ================== CAPA PERSONALIZADA (ESTILO UNIMONTES) ==================
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    \vspace*{-1cm}\hspace*{-1.5cm}
+    {\mbox{\begin{minipage}{2cm}
+        \centerline{\includegraphics[scale=0.22]{Images/estadominas.jpeg}}
+    \end{minipage}}} \hspace{-.6cm}
+    \begin{minipage}{11.5cm}
+        \begin{center}
+            {\textbf{\large Universidade Estadual de Montes Claros}}\\
+            {\textsc{\small Centro de Ci\^{e}ncias Exatas e Tecnol\'{o}gicas}}\\
+            {\textsc{\small Curso de Bacharelado em Sistemas de Informa\c{c}\~{a}o}}\\
+        \end{center}
+    \end{minipage}
+    {\mbox{\begin{minipage}{2cm}
+        \centerline{\includegraphics[scale=0.065]{Images/unimontes.png}}
+    \end{minipage}}}
+
+    \vspace{2cm}
+    \center
+    {\ABNTEXchapterfont\large\imprimirautor}
+    \vfill
+    \begin{center}
+        \ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+    \end{center}
+    \vfill
+    \large\imprimirlocal
+    \par
+    \large\imprimirdata
+    \vspace*{1cm}
+  \end{capa}
+}
+
+% ================== INÍCIO DO DOCUMENTO ==================
+\begin{document}
+\frenchspacing
+\selectlanguage{brazil}
+
+% Ativa a adequação à NBR 10520:2023 -- precisa ser a primeira citação
+% processada no documento.
+\citeoption{abnt-opcoes-nbr2023}
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+\imprimircapa
+
+% --- Folha de Rosto (contracapa) ---
+\begin{folhaderosto}
+    \begin{center}
+        {\large\imprimirautor}\\
+        \vspace*{2.5cm}
+        {\Large\bfseries\imprimirtitulo}\\
+        \vspace*{2.5cm}
+        \hspace{.45\textwidth}
+        \begin{minipage}{.5\textwidth}
+            \imprimirpreambulo
+        \end{minipage}
+        \vspace*{2.5cm}
+        \begin{flushright}
+            \begin{tabular}{rl}
+                \textbf{Professor(a):} & [Nome do(a) Professor(a)] \\
+                \textbf{Aluno(a):} & [Nome Completo do Autor] \\
+                \textbf{Disciplina:} & [Nome da Disciplina]
+            \end{tabular}
+        \end{flushright}
+        \vfill
+        {\large\imprimirlocal}\\
+        {\large\imprimirdata}
+    \end{center}
+\end{folhaderosto}
+
+% --- Lista de Figuras ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+% --- Lista de Quadros ---
+\pdfbookmark[0]{\listofquadrosname}{loq}
+\listofquadros*
+\cleardoublepage
+
+% --- Lista de Tabelas ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+
+% --- Lista de Siglas ---
+\pdfbookmark[0]{\listadesiglasname}{los}
+\begin{siglas}
+    \item[ABNT] Associação Brasileira de Normas Técnicas
+    \item[HTTP] \textit{Hypertext Transfer Protocol}
+    \item[URL] \textit{Uniform Resource Locator}
+\end{siglas}
+\cleardoublepage
+
+% --- Lista de Listagens ---
+\pdfbookmark[0]{\lstlistlistingname}{lol}
+\lstlistoflistings
+\cleardoublepage
+
+% --- Sumário ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ================================================================
+% CAPÍTULO 1
+% ================================================================
+\chapter{Introdução}
+
+\section{Problema Tratado}
+
+Apresente aqui, de forma objetiva e impessoal, a situação-problema que motivou a elaboração deste relatório: qual necessidade, dificuldade ou demanda prática precisou ser resolvida. Evite a primeira pessoa -- prefira construções como "identificou-se" ou "observou-se" a "eu identifiquei" ou "nós observamos".
+
+\section{Justificativa}
+
+Explique por que a atividade relatada é relevante, tanto do ponto de vista acadêmico quanto prático. Ao mencionar cada \textit{software}, ferramenta ou tecnologia utilizada, referencie-a por meio de nota de rodapé, informando uma breve descrição, o endereço eletrônico oficial e a data de acesso. Por exemplo, utilizou-se o [Nome do Software 1]\footnote{[Nome do Software 1]: breve descrição da ferramenta. Disponível em: \url{https://www.exemplo1.com/}. Acesso em: DD mês. AAAA.} para [finalidade], em conjunto com o [Nome do Software 2]\footnote{[Nome do Software 2]: breve descrição da ferramenta. Disponível em: \url{https://www.exemplo2.com/}. Acesso em: DD mês. AAAA.}, responsável por [finalidade].
+
+\section{Objetivo}
+
+Descreva, em um único parágrafo, o objetivo geral do trabalho relatado: o que se pretendeu alcançar com a atividade desenvolvida.
+
+% ================================================================
+% CAPÍTULO 2
+% ================================================================
+\chapter{Fundamentação Teórica}
+
+Este capítulo apresenta os principais conceitos, padrões e tecnologias necessários à compreensão do trabalho desenvolvido. Além de livros e artigos científicos, é recomendável citar documentos que definam padrões e protocolos formalmente estabelecidos, quando pertinentes ao tema.
+
+Por exemplo, ao tratar de comunicação entre sistemas na \textit{web}, é possível fundamentar a discussão no documento que define o protocolo HTTP, conforme \citeonline{rfc9110http}, que estabelece a sintaxe e a semântica das mensagens trocadas entre cliente e servidor.
+
+Do ponto de vista acadêmico, \citeonline{exemplolivro2024} definem [conceito relevante] como [definição], o que fundamenta a abordagem adotada neste trabalho. Complementarmente, \citeonline{exemploartigo2023} discutem [aspecto relacionado], reforçando a relevância do tema tratado.
+
+Ao final do capítulo, sintetize como os conceitos apresentados se conectam entre si e como eles fundamentam as decisões tomadas no capítulo de Desenvolvimento.
+
+% ================================================================
+% CAPÍTULO 3
+% ================================================================
+\chapter{Desenvolvimento}
+
+Para garantir a organização e a modularidade do trabalho, o desenvolvimento foi dividido em subseções, cada uma correspondendo a uma etapa distinta do projeto.
+
+\section{Nome da Primeira Subseção}
+
+Descreva aqui a primeira etapa do desenvolvimento. O Quadro \ref{quadro:tecnologias} sintetiza as principais tecnologias utilizadas e sua respectiva finalidade no projeto.
+
+\begin{quadro}[H]
+    \centering
+    \caption{Tecnologias utilizadas e suas finalidades}
+    \label{quadro:tecnologias}
+    \begin{tabular}{ll}
+        \toprule
+        \textbf{Tecnologia} & \textbf{Finalidade} \\
+        \midrule
+        {[}Tecnologia 1{]} & {[}Finalidade no projeto{]} \\
+        {[}Tecnologia 2{]} & {[}Finalidade no projeto{]} \\
+        {[}Tecnologia 3{]} & {[}Finalidade no projeto{]} \\
+        \bottomrule
+    \end{tabular}
+    \fonte{Elaborado pelo autor, 2026.}
+\end{quadro}
+
+Conforme apresentado no Quadro \ref{quadro:tecnologias}, cada tecnologia cumpriu um papel específico e complementar dentro da arquitetura proposta, o que permitiu a organização modular do projeto descrita nesta seção.
+
+\section{Nome da Segunda Subseção}
+
+Descreva aqui uma etapa do desenvolvimento que produza dados quantitativos ou resultados comparáveis. A Tabela \ref{tab:resultados} apresenta um exemplo de resultado obtido.
+
+\begin{table}[H]
+    \centering
+    \caption{Resultados obtidos no cenário avaliado}
+    \label{tab:resultados}
+    \begin{tabular}{ll}
+        \toprule
+        \textbf{Métrica} & \textbf{Valor} \\
+        \midrule
+        {[}Métrica 1{]} & {[}Valor{]} \\
+        {[}Métrica 2{]} & {[}Valor{]} \\
+        \bottomrule
+    \end{tabular}
+    \fonte{Elaborado pelo autor, 2026.}
+\end{table}
+
+Os valores apresentados na Tabela \ref{tab:resultados} evidenciam [interpretação objetiva do resultado obtido], o que confirma [conclusão parcial relacionada ao objetivo do trabalho].
+
+\section{Nome da Terceira Subseção}
+
+Quando o trabalho envolver código-fonte, utilize o ambiente de Listagem, que numera e legenda o trecho de código separadamente do texto corrido. A Listagem \ref{lst:exemplo} apresenta um exemplo.
+
+\begin{lstlisting}[caption={Exemplo de método em Java}, label={lst:exemplo}, language=Java]
+public String exemploMetodo() {
+    // Corpo do metodo de exemplo
+    return "resultado";
+}
+\end{lstlisting}
+
+A rotina apresentada na Listagem \ref{lst:exemplo} ilustra [o que a rotina faz e por que ela é relevante para o trabalho], evidenciando a abordagem adotada na implementação.
+
+\section{Nome da Quarta Subseção}
+
+Utilize Figuras preferencialmente para elementos visuais essenciais à compreensão do texto -- diagramas, capturas de tela centrais ou fluxogramas. Evite incluir um número excessivo de Figuras no corpo do texto; caso haja muitas capturas de tela ou ilustrações complementares, prefira deslocá-las para um Apêndice (ver Apêndice \ref{ap:figuras_adicionais}), mantendo no corpo do texto apenas as imprescindíveis.
+
+A Figura \ref{fig:exemplo} apresenta um exemplo de elemento visual central ao trabalho.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{example-image}
+    \caption{Elemento visual de exemplo}
+    \label{fig:exemplo}
+    \fonte{Elaborado pelo autor, 2026.}
+\end{figure}
+
+Quando duas ou mais imagens estiverem diretamente relacionadas e precisarem ser apresentadas em conjunto, utilize subfiguras identificadas por letra -- Figura \ref{fig:comparacao}(a) e Figura \ref{fig:comparacao}(b) --, em vez de numerá-las como Figura 1.1 e Figura 1.2.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-a}
+        \caption{Antes}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-b}
+        \caption{Depois}
+    \end{subfigure}
+    \caption{Comparação entre os cenários avaliados}
+    \label{fig:comparacao}
+    \fonte{Elaborado pelo autor, 2026.}
+\end{figure}
+
+A comparação entre a Figura \ref{fig:comparacao}(a) e a Figura \ref{fig:comparacao}(b) evidencia [a diferença relevante observada entre os dois cenários], confirmando o efeito esperado da mudança implementada.
+
+% ================================================================
+% CAPÍTULO 4
+% ================================================================
+\chapter{Trabalhos Correlatos}
+
+Este capítulo situa o trabalho desenvolvido perante o que já foi publicado sobre o tema, tanto na literatura acadêmica quanto na prática de profissionais da área.
+
+Do ponto de vista acadêmico, \citeonline{exemploartigo2023} propõem [abordagem do estado da arte], obtendo [principal resultado]. Em comparação, o trabalho aqui relatado [semelhança ou diferença em relação a essa abordagem], o que evidencia [contribuição ou limitação identificada].
+
+Do ponto de vista prático, é comum encontrar discussões relevantes em fóruns especializados voltados a desenvolvedores. Por exemplo, conforme discussão registrada por \citeonline{exemploforum2024} no fórum Stack Overflow, [opinião ou recomendação prática relatada por programadores experientes sobre o tema]. Essa perspectiva prática, embora não substitua a literatura acadêmica, complementa a fundamentação ao evidenciar [ponto de convergência ou divergência com a abordagem adotada neste trabalho].
+
+Dessa forma, o cotejamento entre a literatura acadêmica e a experiência prática relatada por desenvolvedores reforça a adequação da abordagem escolhida para a solução do problema tratado neste relatório.
+
+% ================================================================
+% CAPÍTULO 5
+% ================================================================
+\chapter{Conclusão}
+
+Conclui-se, com a realização deste trabalho, que [síntese objetiva do que foi alcançado em relação ao objetivo proposto no Capítulo 1]. Verificou-se que [principal resultado ou aprendizado obtido], o que confirma a relevância da abordagem adotada.
+
+Como limitação, observou-se que [limitação identificada durante o desenvolvimento]. Para trabalhos futuros, sugere-se [sugestão objetiva de continuidade ou aprimoramento].
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+\bibliography{references}
+
+% --- Apêndices ---
+\begin{apendicesenv}
+
+\chapter{Figuras Adicionais}
+\label{ap:figuras_adicionais}
+
+Este apêndice reúne Figuras complementares que, por não serem imprescindíveis à compreensão direta do texto, foram deslocadas do corpo do relatório para não sobrecarregar visualmente os capítulos anteriores.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{example-image}
+    \caption{Figura complementar de exemplo}
+    \label{fig:apendice_exemplo}
+    \fonte{Elaborado pelo autor, 2026.}
+\end{figure}
+
+\end{apendicesenv}
+
+\end{document}

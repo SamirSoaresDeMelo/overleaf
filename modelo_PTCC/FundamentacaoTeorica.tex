@@ -1,0 +1,75 @@
+\chapter{Fundamentação Teórica}
+\label{cap:FundamentacaoTeorica}
+
+Este capítulo apresenta a fundamentação teórica necessária ao desenvolvimento da pesquisa, abordando os principais conceitos, técnicas e tecnologias relacionados ao tema. Cada seção deve corresponder a um conceito central para a compreensão da metodologia proposta -- evite incluir conceitos que não serão retomados na metodologia ou nos resultados.
+
+\section{Nome do Primeiro Conceito}
+
+Apresente aqui o primeiro conceito teórico relevante para o trabalho. Utilize citações para embasar as definições apresentadas. Há duas formas principais de citar um autor conforme a ABNT:
+
+Na forma narrativa, o nome do autor faz parte da frase: \citeonline{marconi2017metodologia} definem o método científico como um conjunto de procedimentos sistemáticos para a produção de conhecimento válido.
+
+Na forma parentética, a citação aparece entre parênteses ao final da frase, sem fazer parte da sintaxe da oração \cite{marconi2017metodologia}.
+
+Para citar uma página específica de uma obra (recomendado em citações diretas), utiliza-se \citeonline[p.~10]{marconi2017metodologia}.
+
+A Figura \ref{fig:exemplo} ilustra um exemplo de diagrama simples, construído diretamente em \LaTeX{};
+
+\begin{figure}[H]
+    \centering
+    \caption{Exemplo de diagrama simples}
+    \label{fig:exemplo}
+    \centering
+    \begin{tikzpicture}[
+        node distance=2cm, 
+        every node/.style={draw, rectangle, minimum width=2.5cm, minimum height=1cm, align=center, rounded corners=3pt},
+        >=Stealth
+    ]
+        \node (a) {Elemento A};
+        \node (b) [right=of a] {Elemento B};
+        \node (c) [right=of b] {Elemento C};
+        
+        \draw[->, thick] (a) -- (b);
+        \draw[->, thick] (b) -- (c);
+    \end{tikzpicture}
+    \fonte{Elaborado pelo autor, 2026.}
+\end{figure}
+
+\section{Nome do Segundo Conceito}
+
+Apresente aqui o segundo conceito teórico, por exemplo um algoritmo relevante para o trabalho. O Algoritmo \ref{alg:exemplo} ilustra o uso do pacote \textit{algorithm2e} (já configurado em português no preâmbulo) para descrever pseudocódigo.
+
+OBS: Se citar figura ou algoritmo, tem que informar a página do livro ao qual referenciou na fonte da imagem ou algoritmo. ex:
+
+\begin{algorithm}[H]
+    \caption{Nome do algoritmo de exemplo}
+    \label{alg:exemplo}
+    \KwIn{$n$: um valor de entrada}
+    \KwOut{$r$: o resultado calculado}
+    $r \gets 1$\;
+    \For{$i \gets 1$ \KwTo $n$}{
+        $r \gets r \times i$\;
+    }
+    \Return{$r$}\;
+\end{algorithm}
+\fonte{\citeonline[p.~XX]{marconi2017metodologia}. Substitua pela referência e página reais do livro de onde o algoritmo foi adaptado.}
+
+\section{Nome do Terceiro Conceito}
+
+Se o trabalho envolver algum tipo de código-fonte (consultas, scripts, trechos de configuração), utilize \verb|\lstinputlisting| para importar o código de um arquivo externo, mantendo-o destacado do texto corrido e numerado como Listagem. A Listagem \ref{lst:exemplo} apresenta um exemplo.
+
+\lstinputlisting[
+    language=SQL,
+    caption={Exemplo de criação de tabela},
+    label={lst:exemplo}
+]{sql/department.sql}
+\vspace{-0.4cm}
+\fonte{\citeonline[p.~14]{silberschatz2020database}.}
+
+\section{Trabalhos Relacionados}
+
+Encerre a fundamentação teórica com uma seção que situe o trabalho perante a literatura já existente sobre o tema. Para cada trabalho relacionado relevante, apresente: (i) o que o autor fez; (ii) qual metodologia ou abordagem foi utilizada; (iii) quais os principais resultados; e (iv) como esse trabalho se relaciona com a pesquisa proposta.
+
+Por exemplo: \citeonline{marconi2017metodologia} discutem [aspecto relevante], utilizando [metodologia/abordagem], concluindo que [principal resultado]. Esse achado é relevante para este trabalho pois [conexão direta com a pesquisa proposta].
+
+Ao final da seção, é recomendável indicar explicitamente a lacuna identificada na literatura que este trabalho pretende preencher, deixando claro o ineditismo ou a contribuição da pesquisa.
