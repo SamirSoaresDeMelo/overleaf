@@ -20,6 +20,31 @@ Este projeto utiliza o olcli para sincronização entre projetos do Overleaf e a
    olcli auth --cookie "SEU_COOKIE_AQUI"
    ```
 
+OBS: No windows, pode ser que dê o seguinte erro ao executar o comando acima colando o token: 
+
+```
+olcli : O arquivo C:\Users\Fulano\AppData\Roaming\npm\olcli.ps1 não pode ser carregado porque a execução de scripts foi desabilitada neste sistema. Para obter mais 
+informações, consulte about_Execution_Policies em https://go.microsoft.com/fwlink/?LinkID=135170.
+No linha:1 caractere:1
++ olcli auth --cookie SEU_COOKIE_AQUI
++ ~~~~~
+    + CategoryInfo          : ErrodeSegurança: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+```
+
+Para resolver isso, basta alterar a política de execução de scripts do Windows, que por padrão vem bloqueada por segurança com o comando:
+
+```sh    
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+Após isso, vai aparecer 
+
+```sh
+✔ Authenticated! Found X projects.
+Config saved to: C:\Users\Fulano\AppData\Roaming\olcli-nodejs\Config\config.json
+```
+
 ## 📂 Listar projetos
 ```sh
 olcli list
