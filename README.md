@@ -38,7 +38,7 @@ Para resolver isso, basta alterar a política de execução de scripts do Window
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-Após isso, vai aparecer 
+Após executar o olcli auth, vai aparecer 
 
 ```sh
 ✔ Authenticated! Found X projects.
